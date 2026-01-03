@@ -181,10 +181,10 @@ const handleGoBack = () => {
 
 <style scoped>
 .wrapper-mapa {
-  position: relative;
   width: 100%;
-  height: 600px;
-  background: #f5f5f5;
+  height: 500px;
+  background: transparent;
+  position: relative;
 }
 
 .boton-regresar {
