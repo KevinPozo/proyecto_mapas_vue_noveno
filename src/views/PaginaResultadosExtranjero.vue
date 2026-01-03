@@ -1,20 +1,18 @@
-<!-- src/views/PaginaResultadosExtranjero.vue -->
 <template>
-  <div>
+  <div class="pagina-resultados">
     <MapaExtranjero />
     <MapaEcuador />
   </div>
 </template>
 
-<script>
+<script setup>
+import MapaEcuador from "@/components/MapaEcuador.vue";
 import MapaExtranjero from "@/components/MapaExtranjero.vue";
-import MapaEcuador from "@/views/MapaEcuadorView.vue";
-
-export default {
-  name: "PaginaResultadosExtranjero",
-  components: {
-    MapaExtranjero,
-    MapaEcuador,
-  },
-};
 </script>
+
+<style scoped>
+.pagina-resultados {
+  width: 100%;
+  min-height: 100vh;
+}
+</style>
