@@ -102,6 +102,11 @@
               </div>
             </v-col>
             <v-col cols="12" md="3">
+              <div class="d-flex justify-center mb-2">
+                <v-btn class="boton-limpiar-filtros" depressed small @click="limpiarFiltros">
+                  LIMPIAR FILTROS
+                </v-btn>
+              </div>
               <v-card class="pa-4 text-center">
                 <h3>Tarjetas Pendientes</h3>
               </v-card>
@@ -141,10 +146,10 @@ export default {
       filtroParroquia: null,
 
       itemsVuelta: ["Primera Vuelta", "Segunda Vuelta"],
-      itemsPartido: ["Partido A", "Partido B"], // TODO: Cargar real
-      itemsProvincia: [],
-      itemsCanton: [],
-      itemsParroquia: [],
+      itemsPartido: ["Partido Social Cristiano", "Izquierda Democrática", "Partido Roldosista Ecuatoriano", "Movimiento de Unidad Plurinacional Pachakutik"],
+      itemsProvincia: ["AZUAY", "BOLIVAR", "CAÑAR", "CARCHI", "CHIMBORAZO", "COTOPAXI", "EL ORO", "ESMERALDAS", "GALAPAGOS", "GUAYAS", "IMBABURA", "LOJA", "LOS RIOS", "MANABI", "MORONA SANTIAGO", "NAPO", "ORELLANA", "PASTAZA", "PICHINCHA", "SANTA ELENA", "SANTO DOMINGO DE LOS TSACHILAS", "SUCUMBIOS", "TUNGURAHUA", "ZAMORA CHINCHIPE"],
+      itemsCanton: ["CUENCA", "GUARANDA", "AZOGUES", "TULCAN", "RIOBAMBA", "LATACUNGA", "MACHALA", "ESMERALDAS", "PUERTO BAQUERIZO MORENO", "GUAYAQUIL", "IBARRA", "LOJA", "BABAHOYO", "PORTOVIEJO", "MACAS", "TENA", "PUERTO FRANCISCO DE ORELLANA", "PUYO", "QUITO", "SANTA ELENA", "SANTO DOMINGO", "NUEVA LOJA", "AMBATO", "ZAMORA"],
+      itemsParroquia: ["BELLAVISTA", "CAÑARIBAMBA", "EL BATÁN", "EL SAGRARIO", "EL VECINO", "GIL RAMÍREZ DÁVALOS", "HERMANO MIGUEL", "HUAYNACÁPAC", "MACHÁNGARA", "MONAY", "SAN BLAS", "SAN SEBASTIÁN", "SUCRE", "TOTORACOCHA", "YANUNCAY"],
 
       // --- MAPA STATE ---
       nivelActual: "provincias",
@@ -166,6 +171,15 @@ export default {
     aplicarFiltros() {
       console.log("Aplicando filtros...");
       this.drawer = false;
+    },
+
+    limpiarFiltros() {
+      this.filtroVuelta = null;
+      this.filtroPartido = null;
+      this.filtroProvincia = null;
+      this.filtroCanton = null;
+      this.filtroParroquia = null;
+      console.log("Filtros limpiados");
     },
 
     onRegionSelected(data) {
@@ -231,6 +245,11 @@ export default {
   padding: 5px 15px;
   border-radius: 4px;
   pointer-events: none;
+}
+
+.boton-limpiar-filtros {
+  background-color: #12a2c2;
+  color: white;
 }
 
 .fade-enter-active,
