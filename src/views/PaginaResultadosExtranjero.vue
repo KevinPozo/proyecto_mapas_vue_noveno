@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import MapaEcuador from "@/components/MapaEcuador.vue";
+import MapaEcuador from "@/components/MapaElectoral.vue";
 import MapaExtranjero from "@/components/MapaExtranjero.vue";
 </script>
 
