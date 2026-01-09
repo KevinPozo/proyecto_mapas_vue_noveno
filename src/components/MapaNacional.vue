@@ -87,9 +87,15 @@
                   @click="limpiar">
                   <v-icon color="white" size="24">mdi-delete</v-icon>
                </v-btn>
-              <v-card class="pa-4 text-center">
-                <h3>Tarjetas Pendientes</h3>
-              </v-card>
+              
+              <div class="mt-4">
+                 <TarjetaCandidato 
+                    :itemsCandidato="listaCandidatos" 
+                    :itemsLeyenda="listaLeyenda"
+                    :etiquetaTarjeta2="partido"
+                    @cambio-partido="partido = $event" 
+                 />
+              </div>
             </v-col>
           </v-row>
         </v-card>
@@ -100,10 +106,16 @@
 
 <script>
 import MapaEcuador from "./MapaEcuador";
+import TarjetaCandidato from "@/components/TarjetaCandidato.vue";
+import { candidatoData, dessertsData } from "@/assets/data/CandidatosData.js";
+
 
 export default {
   name: "MapaNacional",
-  components: { MapaEcuador },
+  components: { 
+    MapaEcuador,
+    TarjetaCandidato
+  },
   props: {
     geoProvincias: { type: Object, required: true },
     geoCantones: { type: Object, required: false, default: () => ({}) },
@@ -135,6 +147,10 @@ export default {
       expand: true,
       tituloMapa: "0",
       titulo: this.tituloInicial,
+
+      // Datos para tarjeta
+      listaCandidatos: candidatoData,
+      listaLeyenda: dessertsData,
     };
   },
 
@@ -185,6 +201,7 @@ export default {
       this.partido = "";
       this.primeraV();
       this.drawer = false;
+      this.$emit('filter-change', { provincia: '', canton: '', partido: '' });
     },
     primeraV() {
       this.expand = true;
@@ -234,6 +251,12 @@ export default {
 
       this.asignarTitulo();
       this.drawer = false;
+      
+      this.$emit('filter-change', {
+        provincia: this.select,
+        canton: this.select2,
+        partido: this.partido
+      });
     },
 
     asignarTitulo() {

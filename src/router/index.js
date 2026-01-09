@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import PaginaResultadosExtranjero from "@/views/PaginaResultadosExtranjero.vue";
-import PaginaResultadoNacional from "@/views/PaginaResultadosNacional.vue";
+import PaginaResultadosExtranjero from "@/views/PaginaResultadosExtranjero1996.vue";
+import PaginaResultadoNacional from "@/views/PaginaResultadosNacional1996.vue";
+import VistaCarrusel from "@/views/VistaCarrusel.vue";
 const routes = [
   {
     path: "/",
@@ -13,7 +14,11 @@ const routes = [
     name: "Extranjero",
     component: PaginaResultadosExtranjero,
   },
-
+  {
+    path: "/carrusel",
+    name: "Carrusel",
+    component: VistaCarrusel,
+  },
 ];
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
